@@ -18,11 +18,16 @@ public interface Idao {
 	 * @param motDePasse
 	 *            mot de passe du conseiller
 	 * @return true ou false
+	 * 
+	 * @throws ConseillerServiceException
+	 *             erreur SQL en cas d’échec de la récupération
 	 */
 	public boolean verifAuthentification(String courriel, String motDePasse) throws ConseillerServiceException;
 
 	/**
 	 * Permet de faire récupérer tous les clients de la banque
+	 * 
+	 * @return liste de tous les clients
 	 * 
 	 */
 	public List<Compte> getTousLesComptes();
@@ -33,10 +38,9 @@ public interface Idao {
 	 * @param idClient
 	 *            la clé primaire du client
 	 * @return la liste des compte du client
-	 * @throws CompteOADException
-	 *             erreur SQL en cas d’échec de la récupération
+	 * 
 	 */
-	List<Compte> getComptesByID(int idClient);
+	public List<Compte> getComptesByID(int idClient);
 
 	/**
 	 * Récupère un compte en fonction de sa clé primaire.
@@ -44,8 +48,7 @@ public interface Idao {
 	 * @param id
 	 *            la clé primaire du compte
 	 * @return le compte correspondant
-	 * @throws CompteOADException
-	 *             erreur en cas d’échec de la récupération
+	 * 
 	 */
 	Compte getCompteById(int id);
 
@@ -70,8 +73,7 @@ public interface Idao {
 	 * @param authName
 	 *            l’identifiant renseigner au moment de l’authentification
 	 * @return la liste des clients du conseiller
-	 * @throws ClientOADException
-	 *             erreur si la requête SQL a échouée
+	 * 
 	 */
 	List<Client> getClientsByConseillerAuthName(String authName);
 
@@ -79,8 +81,7 @@ public interface Idao {
 	 * Fournit la liste de tous les clients de la banque.
 	 *
 	 * @return la liste de tous les clients de la banque
-	 * @throws ClientOADException
-	 *             erreur si la requête SQL échoue
+	 *
 	 */
 	List<Client> getTousLesClients();
 
@@ -90,8 +91,7 @@ public interface Idao {
 	 * @param id
 	 *            l’identifiant dans la base de donnée du client à retourner
 	 * @return le client
-	 * @throws ClientOADException
-	 *             erreur si la requête SQL échoue
+	 * 
 	 */
 	Client getClientByID(int id);
 
@@ -132,8 +132,7 @@ public interface Idao {
 	 * @param idClient
 	 *            la clé primaire du client
 	 * @return la liste de ses comptes
-	 * @throws ConseillerServiceException
-	 *             l’erreur si la récupération a échouée
+	 * 
 	 */
 	public List<Compte> getComptes(int idClient);
 

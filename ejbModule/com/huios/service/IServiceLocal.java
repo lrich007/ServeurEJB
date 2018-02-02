@@ -22,11 +22,16 @@ public interface IServiceLocal {
 	 * @param motDePasse
 	 *            mot de passe du conseiller
 	 * @return true ou false
+	 * 
+	 * @throws ConseillerServiceException
+	 *             erreur SQL en cas d’échec de la récupération
 	 */
 	public boolean verifAuthentification(String courriel, String motDePasse) throws ConseillerServiceException;
 
 	/**
 	 * Permet de faire récupérer tous les clients de la banque
+	 * 
+	 * @return liste de tous les clients
 	 * 
 	 */
 	public List<Compte> getTousLesComptes();
@@ -37,10 +42,9 @@ public interface IServiceLocal {
 	 * @param idClient
 	 *            la clé primaire du client
 	 * @return la liste des compte du client
-	 * @throws CompteOADException
-	 *             erreur SQL en cas d’échec de la récupération
+	 *
 	 */
-	List<Compte> getComptesByID(int idClient);
+	public List<Compte> getComptesByID(int idClient);
 
 	/**
 	 * Récupère un compte en fonction de sa clé primaire.
@@ -48,8 +52,7 @@ public interface IServiceLocal {
 	 * @param id
 	 *            la clé primaire du compte
 	 * @return le compte correspondant
-	 * @throws CompteOADException
-	 *             erreur en cas d’échec de la récupération
+	 *
 	 */
 	Compte getCompteById(int id);
 
@@ -62,8 +65,6 @@ public interface IServiceLocal {
 	 *            le premier compte à mettre à jour
 	 * @param compte2
 	 *            le second compte à mettre à jour
-	 * @throws CompteOADException
-	 *             erreur en cas d’échec de la mise à jour
 	 */
 	void majComptesAtomique(Compte compte1, Compte compte2) throws CompteOADException;
 
@@ -74,8 +75,7 @@ public interface IServiceLocal {
 	 * @param authName
 	 *            l’identifiant renseigner au moment de l’authentification
 	 * @return la liste des clients du conseiller
-	 * @throws ClientOADException
-	 *             erreur si la requête SQL a échouée
+	 * 
 	 */
 	List<Client> getClientsByConseillerAuthName(String authName);
 
@@ -83,8 +83,7 @@ public interface IServiceLocal {
 	 * Fournit la liste de tous les clients de la banque.
 	 *
 	 * @return la liste de tous les clients de la banque
-	 * @throws ClientOADException
-	 *             erreur si la requête SQL échoue
+	 * 
 	 */
 	List<Client> getTousLesClients();
 
@@ -94,8 +93,7 @@ public interface IServiceLocal {
 	 * @param id
 	 *            l’identifiant dans la base de donnée du client à retourner
 	 * @return le client
-	 * @throws ClientOADException
-	 *             erreur si la requête SQL échoue
+	 * 
 	 */
 	Client getClientByID(int id);
 
@@ -123,9 +121,9 @@ public interface IServiceLocal {
 	 * @param montant
 	 *            le montant, positif et en euros, du virement
 	 * @throws ConseillerServiceException
-	 *             erreur si le montant est négatif
-	 * @throws ConseillerServiceException
-	 *             erreur si la modification du solde a échouée
+	 *             erreur si le montant est négatif ou si la modification du solde a
+	 *             échouée
+	 * 
 	 */
 	public boolean effectuerVirement(Compte compteADebiter, Compte compteACrediter, double montant)
 			throws ConseillerServiceException;
@@ -136,8 +134,7 @@ public interface IServiceLocal {
 	 * @param idClient
 	 *            la clé primaire du client
 	 * @return la liste de ses comptes
-	 * @throws ConseillerServiceException
-	 *             l’erreur si la récupération a échouée
+	 * 
 	 */
 	public List<Compte> getComptes(int idClient);
 
