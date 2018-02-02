@@ -158,8 +158,10 @@ public class Conseiller implements java.io.Serializable {
 		return identifiant;
 	}
 	
-	/** @return identifiant
-	 *  			l’identifiant dans la base de donnée
+	/**
+	 * 
+	 * @param identifiant
+	 * 		Identifiant
 	 */
 	public void setIdentifiant(int identifiant) {
 		this.identifiant = identifiant;

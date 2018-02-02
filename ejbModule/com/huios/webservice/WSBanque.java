@@ -32,6 +32,7 @@ public class WSBanque {
 	 * 				mot de passe du conseiller
 	 * @return	true ou false
 	 * @throws ConseillerServiceException
+	 * 				Gere les exceptions
 	 */
 	@GET
 	@Path("/authentification/{courriel}/{motDePasse}")
@@ -57,6 +58,7 @@ public class WSBanque {
 	 * @return	true ou false
 	 * 				
 	 * @throws ConseillerServiceException
+	 * 			Gere les exceptions
 	 */
 	@GET
 	@Path("/virement/{idCompteADebiter}/{idCompteACrediter}/{montant}")
@@ -118,7 +120,8 @@ public class WSBanque {
 	 * @param nom
 	 * 			nom du client
 	 * @return	true ou false
-	 * @throws ClientOADException
+	 * @throws ConseillerServiceException
+	 * 			Gere les exceptions
 	 */
 	@GET
 	@Path("/nomclient/{idClient}/{nom}")
@@ -137,7 +140,8 @@ public class WSBanque {
 	 * @param prenom
 	 * 			prenom du client
 	 * @return	true ou false
-	 * @throws ClientOADException
+	 * @throws ConseillerServiceException
+	 * 			Gere les exceptions
 	 */
 	@GET
 	@Path("/prenomclient/{idClient}/{prenom}")
@@ -156,7 +160,8 @@ public class WSBanque {
 	 * @param courriel
 	 * 			courriel du client
 	 * @return	true ou false
-	 * @throws ClientOADException
+	 * @throws ConseillerServiceException
+	 * 			Gere les exceptions
 	 */
 	@GET
 	@Path("/courrielclient/{idClient}/{courriel}")
@@ -175,7 +180,8 @@ public class WSBanque {
 	 * @param adresse
 	 * 			adresse du client
 	 * @return	true ou false
-	 * @throws ClientOADException
+	 * @throws ConseillerServiceException
+	 * 			Gere les exceptions
 	 */
 	@GET
 	@Path("/adresseclient/{idClient}/{adresse}")
