@@ -5,7 +5,7 @@ import java.io.Serializable;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-/** @author Étienne, Sophia et Maria */
+/** @author Étienne, Sophia, Maria, Louis */
 @Entity
 @DiscriminatorValue("Epargne")
 public class CompteEpargne extends Compte implements Serializable {

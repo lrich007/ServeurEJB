@@ -22,6 +22,17 @@ public class WSBanque {
 	IServiceLocal service;
 	
 	// Ok
+	/**
+	 * Permet de faire la connexion du conseiller.
+	 * Il s'agit de l'authentification du conseiller
+	 * 
+	 * @param courriel
+	 * 				l'identifiant du conseiller
+	 * @param motDePasse
+	 * 				mot de passe du conseiller
+	 * @return	true ou false
+	 * @throws ConseillerServiceException
+	 */
 	@GET
 	@Path("/authentification/{courriel}/{motDePasse}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -33,6 +44,20 @@ public class WSBanque {
 	
 	
 	// Ok
+	/**
+	 * Permet au conseiller de faire un virement 
+	 * compte à compte
+	 * 
+	 * @param idCompteADebiter 
+	 * 				compte à débiter
+	 * @param idCompteACrediter
+	 * 				compte à crediter
+	 * @param montant
+	 * 				montant à virer
+	 * @return	true ou false
+	 * 				
+	 * @throws ConseillerServiceException
+	 */
 	@GET
 	@Path("/virement/{idCompteADebiter}/{idCompteACrediter}/{montant}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -43,8 +68,12 @@ public class WSBanque {
 		Compte compteACrediter = service.getCompteById(idCompteACrediter);
 		return service.effectuerVirement(compteADebiter, compteACrediter, montant);
 	}
-
+	
 	// Ok
+	/**
+	 * Permet de lister tous les clients
+	 * @return une liste de client
+	 */
 	@GET
 	@Path("/listAllClients")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -53,22 +82,44 @@ public class WSBanque {
 	}
 
 	// Ok
+	/**
+	 * Permet d'afficher le client en fonction de son Identifiant
+	 * @param id
+	 * 			l'identifiant du client
+	 * @return	le client en fonction de son Id
+	 */
 	@GET
 	@Path("/client/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public Client getClientByID(@PathParam("id") int id) {
 		return service.getClientByID(id);
 	}
-
-	// Ok
+	
+	/**
+	 * Permet de lister tous les clients du conseiller
+	 * en fonction du courriel du conseiller
+	 * 
+	 * @param authName
+	 * 				courriel du conseiller
+	 * @return	une liste de clients
+	 */
 	@GET
 	@Path("/listAuthName/{authName}")
 	@Produces(MediaType.TEXT_PLAIN)
 	public List<Client> getClientsByConseillerAuthName(@PathParam("authName") String authName) {
 		return service.getClientsByConseillerAuthName(authName);
 	}
-
-	// Ok
+	
+	
+	/**
+	 * Permet de modifier le nom du client grace à son identifiant
+	 * @param idClient
+	 * 				identifiant du client
+	 * @param nom
+	 * 			nom du client
+	 * @return	true ou false
+	 * @throws ClientOADException
+	 */
 	@GET
 	@Path("/nomclient/{idClient}/{nom}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -78,8 +129,16 @@ public class WSBanque {
 		client.setNom(nom);
 		return service.majClient(client);
 	}
-
-	// Ok
+	
+	/**
+	 * Permet de modifier le prenom du client en fonction de son identifiant
+	 * @param idClient
+	 * 			identifiant du client
+	 * @param prenom
+	 * 			prenom du client
+	 * @return	true ou false
+	 * @throws ClientOADException
+	 */
 	@GET
 	@Path("/prenomclient/{idClient}/{prenom}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -89,8 +148,16 @@ public class WSBanque {
 		client.setPrenom(prenom);
 		return service.majClient(client);
 	}
-
-	// Ok
+	
+	/**
+	 * Permet de modifier le courriel du client en fonction de son identifiant
+	 * @param idClient
+	 * 			identifiant du client
+	 * @param courriel
+	 * 			courriel du client
+	 * @return	true ou false
+	 * @throws ClientOADException
+	 */
 	@GET
 	@Path("/courrielclient/{idClient}/{courriel}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -100,8 +167,16 @@ public class WSBanque {
 		client.setCourriel(courriel);
 		return service.majClient(client);
 	}
-
-	// Ok
+	
+	/**
+	 * Permet de modifier l'adresse du client en fonction de l'identifiant
+	 * @param idClient
+	 * 			identifiant du client
+	 * @param adresse
+	 * 			adresse du client
+	 * @return	true ou false
+	 * @throws ClientOADException
+	 */
 	@GET
 	@Path("/adresseclient/{idClient}/{adresse}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -112,7 +187,12 @@ public class WSBanque {
 		return service.majClient(client);
 	}
 
-	// Ok
+	/**
+	 * Permet de récupérer un compte en fonction de son Identifiant
+	 * @param id
+	 * 		identifiant du compte
+	 * @return un compte
+	 */
 	@GET
 	@Path("/compte/{id}")
 	@Produces(MediaType.TEXT_PLAIN)
@@ -120,7 +200,14 @@ public class WSBanque {
 		return service.getCompteById(id);
 	}
 
-	// Ok
+	/**
+	 * Permet d'afficher tous les comptes en fonction de l'identifiant
+	 * 
+	 * @param idClient
+	 * 			identifiant du client
+	 * 			
+	 * @return	une liste de comtpe
+	 */
 	@GET
 	@Path("/listComptes/{idClient}")
 	@Produces(MediaType.TEXT_PLAIN)

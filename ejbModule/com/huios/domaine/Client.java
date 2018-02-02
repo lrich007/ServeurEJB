@@ -29,6 +29,7 @@ public class Client implements java.io.Serializable {
 	/** Liste des comptes d’un client, entre un et deux. */
 	@OneToMany(mappedBy = "client")
 	private List<Compte> comptes;
+	/** Conseiller en charge du client. */
 	@ManyToOne
 	private Conseiller conseiller;
 
@@ -78,7 +79,7 @@ public class Client implements java.io.Serializable {
 	/*
 	 * Méthodes d’accès aux attributs
 	 */
-
+	/** @return une chaine de charactère nécessaire pour le client REST*/
 	@Override
 	public String toString() {
 		return "Client [identifiant=" + identifiant + ", nom=" + nom + ", prenom=" + prenom + ", courriel=" + courriel
@@ -177,7 +178,7 @@ public class Client implements java.io.Serializable {
 		result = prime * result + ((prenom == null) ? 0 : prenom.hashCode());
 		return result;
 	}
-
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj) {

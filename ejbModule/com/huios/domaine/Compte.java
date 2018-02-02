@@ -75,7 +75,7 @@ public abstract class Compte implements java.io.Serializable {
 	/*
 	 * Méthodes génériques
 	 */
-
+	/** @return une chaine de charactère nécessaire pour le client REST*/
 	 @Override
 	 public String toString() {
 	 return "[solde=" + solde + ", client=" + client + "]";

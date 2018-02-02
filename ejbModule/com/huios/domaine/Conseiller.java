@@ -34,9 +34,6 @@ public class Conseiller implements java.io.Serializable {
 	@OneToMany(mappedBy = "conseiller")
 	private List<Client> clients;
 
-	public void setIdentifiant(int identifiant) {
-		this.identifiant = identifiant;
-	}
 
 	/** Nécessaire pour la sérialisation de la classe. */
 	public Conseiller() {
@@ -160,6 +157,13 @@ public class Conseiller implements java.io.Serializable {
 	public int getIdentifiant() {
 		return identifiant;
 	}
+	
+	/** @return identifiant
+	 *  			l’identifiant dans la base de donnée
+	 */
+	public void setIdentifiant(int identifiant) {
+		this.identifiant = identifiant;
+	}
 
 	@Override
 	public int hashCode() {
@@ -236,20 +240,5 @@ public class Conseiller implements java.io.Serializable {
 		return true;
 	}
 
-	/**
-	 * Ajouter un client à la liste des clients du conseiller.
-	 *
-	 * @param client
-	 *            Le client
-	 * @throws ClientException
-	 *             Exception si le nombre de clients maximum est atteint
-	 */
-	public void ajouterClient(Client client) throws ClientException {
-		if (clients.size() < MAX_CLIENTS) {
-			clients.add(client);
-		} else {
-			throw new ClientException("Un conseiller ne peux avoir plus de dix client");
-		}
-	}
 
 }

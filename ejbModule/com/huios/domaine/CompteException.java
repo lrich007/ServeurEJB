@@ -1,6 +1,6 @@
 package com.huios.domaine;
 
-/** @author Étienne, Sophia et Maria */
+/** @author Étienne, Sophia, Maria, Louis */
 public class CompteException extends Exception {
 
 	private static final long serialVersionUID = -458451376748647609L;
