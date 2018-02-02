@@ -28,13 +28,18 @@ public class DaoImpl implements Idao {
 		Query query = em.createQuery("select alias from Conseiller alias where courriel = :courriel and motDePasse = :motDePasse");
 		query.setParameter("courriel", courriel);
 		query.setParameter("motDePasse", motDePasse);
-		conseiller = (Conseiller) query.getSingleResult();
-		
-		if(conseiller == null) {
+		try {
+			conseiller = (Conseiller) query.getSingleResult();
+			if(conseiller == null) {
+				return true;
+			}else {
+				return false;
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 			return false;
-		}
-		else
-			return true;			
+		}		
 	}
 
 	
@@ -104,7 +109,7 @@ public class DaoImpl implements Idao {
 	@Override
 	public List<Client> getClientsByConseillerAuthName(String authName) {
 		List<Client> clients = new ArrayList<>();
-		Query query = em.createQuery("select alias from Client alias where alias.conseiller.nom like :authName ");
+		Query query = em.createQuery("select alias from Client alias where alias.conseiller.courriel like :authName ");
 		query.setParameter("authName", "%" + authName + "%");
 		clients = query.getResultList();
 		return clients;
