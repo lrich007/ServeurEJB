@@ -1,6 +1,6 @@
 package com.huios.service;
 
-/** @author Étienne, Sophia et Maria */
+/** @author Étienne, Sophia, Maria, Louis */
 public class ConseillerServiceException extends Exception {
 
 	private static final long serialVersionUID = 3525265711824562831L;

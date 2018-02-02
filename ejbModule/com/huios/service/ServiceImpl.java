@@ -10,20 +10,20 @@ import com.huios.dao.CompteOADException;
 import com.huios.dao.Idao;
 import com.huios.domaine.Client;
 import com.huios.domaine.Compte;
-import com.huios.domaine.Conseiller;
 
-@Stateless(name="BP2")
+/** @author Étienne, Sophia, Maria, Louis */
+@Stateless(name = "BP2")
 public class ServiceImpl implements IServiceLocal, IServiceRemote {
 
 	@Inject
 	Idao dao;
-	
+
 	@Override
 	public boolean verifAuthentification(String courriel, String motDePasse) throws ConseillerServiceException {
 		// TODO Auto-generated method stub
 		return dao.verifAuthentification(courriel, motDePasse);
 	}
-	
+
 	@Override
 	public List<Compte> getTousLesComptes() {
 		return dao.getTousLesComptes();
@@ -68,7 +68,7 @@ public class ServiceImpl implements IServiceLocal, IServiceRemote {
 	@Override
 	public boolean majClient(Client client) throws ClientOADException {
 		// TODO Auto-generated method stub
-		 return dao.majClient(client);
+		return dao.majClient(client);
 	}
 
 	// ================================================================================================================================================
@@ -84,6 +84,5 @@ public class ServiceImpl implements IServiceLocal, IServiceRemote {
 		// TODO Auto-generated method stub
 		return dao.getComptes(idClient);
 	}
-
 
 }

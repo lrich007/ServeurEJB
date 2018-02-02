@@ -4,23 +4,27 @@ import java.util.List;
 
 import com.huios.domaine.Client;
 import com.huios.domaine.Compte;
-import com.huios.domaine.Conseiller;
 import com.huios.service.ConseillerServiceException;
 
+/** @author Étienne, Sophia, Maria, Louis */
 public interface Idao {
-	
+
 	/**
-	 *  Permet de faire la v�rification de l'identifiant et du mot de passe 
-	 * du conseiller
+	 * Permet de faire la vérification de l'identifiant et du mot de passe du
+	 * conseiller
+	 * 
 	 * @param courriel
-	 * 			identifiant du conseiller
+	 *            identifiant du conseiller
 	 * @param motDePasse
-	 * 			mot de passe du conseiller
-	 * @return
-	 * 		true ou false
+	 *            mot de passe du conseiller
+	 * @return true ou false
 	 */
 	public boolean verifAuthentification(String courriel, String motDePasse) throws ConseillerServiceException;
-	
+
+	/**
+	 * Permet de faire récupérer tous les clients de la banque
+	 * 
+	 */
 	public List<Compte> getTousLesComptes();
 
 	/**
@@ -81,8 +85,7 @@ public interface Idao {
 	List<Client> getTousLesClients();
 
 	/**
-	 * Renvoie un client à partir de son identifiant unique dans la base de
-	 * donnée.
+	 * Renvoie un client à partir de son identifiant unique dans la base de donnée.
 	 *
 	 * @param id
 	 *            l’identifiant dans la base de donnée du client à retourner

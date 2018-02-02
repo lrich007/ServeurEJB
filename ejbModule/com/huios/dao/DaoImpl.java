@@ -1,5 +1,6 @@
 package com.huios.dao;
 
+/** @author Étienne, Sophia, Maria, Louis */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,31 +19,30 @@ import com.huios.service.ConseillerServiceException;
 public class DaoImpl implements Idao {
 	@PersistenceContext
 	EntityManager em;
-	
 
 	@Override
 	public boolean verifAuthentification(String courriel, String motDePasse) throws ConseillerServiceException {
 		// TODO Auto-generated method stub
-		
+
 		Conseiller conseiller = null;
-		Query query = em.createQuery("select alias from Conseiller alias where courriel = :courriel and motDePasse = :motDePasse");
+		Query query = em.createQuery(
+				"select alias from Conseiller alias where courriel = :courriel and motDePasse = :motDePasse");
 		query.setParameter("courriel", courriel);
 		query.setParameter("motDePasse", motDePasse);
 		try {
 			conseiller = (Conseiller) query.getSingleResult();
-			if(conseiller != null) {
+			if (conseiller != null) {
 				return true;
-			}else {
+			} else {
 				return false;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return false;
-		}		
+		}
 	}
 
-	
 	// WebService
 	@Override
 	public boolean effectuerVirement(Compte compteADebiter, Compte compteACrediter, double montant)
@@ -67,8 +67,8 @@ public class DaoImpl implements Idao {
 		}
 
 		/*
-		 * La transaction est effectuée de manière atomique pour éviter une mise à
-		 * jour partielle des comptes.
+		 * La transaction est effectuée de manière atomique pour éviter une mise à jour
+		 * partielle des comptes.
 		 *
 		 * Idéalement on utiliserai les JTA, mais Tomcat ne les fournit pas ; il faut
 		 * donc utiliser une unique méthode OAD.

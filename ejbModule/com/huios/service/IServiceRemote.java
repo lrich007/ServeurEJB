@@ -9,22 +9,22 @@ import com.huios.dao.CompteOADException;
 import com.huios.domaine.Client;
 import com.huios.domaine.Compte;
 
+/** @author Étienne, Sophia, Maria, Louis */
 @Remote
 public interface IServiceRemote {
-	
-	
+
 	/**
-	 *  Permet de faire la v�rification de l'identifiant et du mot de passe 
-	 * du conseiller
+	 * Permet de faire la v�rification de l'identifiant et du mot de passe du
+	 * conseiller
+	 * 
 	 * @param courriel
-	 * 			identifiant du conseiller
+	 *            identifiant du conseiller
 	 * @param motDePasse
-	 * 			mot de passe du conseiller
-	 * @return
-	 * 		true ou false
+	 *            mot de passe du conseiller
+	 * @return true ou false
 	 */
 	public boolean verifAuthentification(String courriel, String motDePasse) throws ConseillerServiceException;
-	
+
 	/**
 	 * Renvoie la liste des comptes d’un client en fonction de sa clé primaire.
 	 *
@@ -83,8 +83,7 @@ public interface IServiceRemote {
 	List<Client> getTousLesClients();
 
 	/**
-	 * Renvoie un client à partir de son identifiant unique dans la base de
-	 * donnée.
+	 * Renvoie un client à partir de son identifiant unique dans la base de donnée.
 	 *
 	 * @param id
 	 *            l’identifiant dans la base de donnée du client à retourner
